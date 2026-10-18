@@ -6,6 +6,11 @@ import pandas as pd
 import openpyxl
 from openpyxl.styles import Alignment, Font
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -14,6 +19,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Configure Chrome options to maintain your login session
 chrome_options = Options()
+chrome_options = Options()
+chrome_options.add_argument("--headless")              # बिना स्क्रीन बैकग्राउंड में चलाने के लिए
+chrome_options.add_argument("--no-sandbox")             # Codespaces/Linux के लिए ज़रूरी
+chrome_options.add_argument("--disable-dev-shm-usage")  # मेमोरी क्रैश से बचने के लिए
+driver = webdriver.Chrome(options=chrome_options)
 custom_profile_path = r"C:\Users\HP\Desktop\MySeleniumProfile"
 chrome_options.add_argument(f"--user-data-dir={custom_profile_path}")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
